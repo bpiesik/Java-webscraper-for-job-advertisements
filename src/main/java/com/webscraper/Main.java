@@ -21,7 +21,7 @@ public class Main {
         // get job advertisements
         Elements ads = doc.getElementsByClass("Wrapper-sc-11673k2-0 cmgNOQ");
 
-        for (Element ad : ads){
+        for (Element ad : ads) {
             // title
             Elements title = ad.getElementsByClass("resultlist-12iu5pk");
             System.out.println("Title: " + title.text());
@@ -38,7 +38,6 @@ public class Main {
             Elements url = ad.getElementsByClass("resultlist-12iu5pk");
             String urlTxt = "stepstone.de" + url.attr("href");
             System.out.println("url: " + urlTxt);
-
 
 
             System.out.println("\n");
