@@ -1,14 +1,12 @@
-package com.webscraper;
+package com.webscraper.model;
 
-import java.util.List;
-
-public class JobAdvertisment {
+public class JobAdvertisement {
     private String title;
     private String company;
-    private List<String> locations;
+    private String[] locations;
     private String url;
 
-    public JobAdvertisment(String title, String company, List<String> locations, String url) {
+    public JobAdvertisement(String title, String company, String[] locations, String url) {
         this.title = title;
         this.company = company;
         this.locations = locations;
@@ -31,11 +29,11 @@ public class JobAdvertisment {
         this.company = company;
     }
 
-    public List<String> getLocations() {
+    public String[] getLocations() {
         return locations;
     }
 
-    public void setLocations(List<String> locations) {
+    public void setLocations(String[] locations) {
         this.locations = locations;
     }
 
