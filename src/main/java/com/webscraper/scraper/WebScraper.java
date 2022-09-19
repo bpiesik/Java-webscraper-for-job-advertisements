@@ -7,6 +7,7 @@ import java.util.List;
 public interface WebScraper {
 
     List<JobAdvertisement> getJobAdvertisements();
+    List<JobAdvertisement> getNewestJobAdvertisements();
 
 
 }
