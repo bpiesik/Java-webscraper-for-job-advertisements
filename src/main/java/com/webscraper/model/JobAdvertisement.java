@@ -1,6 +1,8 @@
 package com.webscraper.model;
 
-public class JobAdvertisement {
+import java.io.*;
+
+public class JobAdvertisement implements Serializable {
     private String title;
     private String company;
     private String[] locations;

@@ -22,18 +22,11 @@ public class Main {
                 .filter(ad -> !ignoredCompanies.contains(ad.getCompany()))
                 .toList();
 
-        for (JobAdvertisement ad : filteredJobAdvertisements) {
-            try {
-                Thread.sleep(1000 * 1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Runtime rt = Runtime.getRuntime();
-            try {
-                rt.exec("rundll32 url.dll,FileProtocolHandler " + "https://" + ad.getUrl());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        JobAdvertisementSaverReader reader = new JobAdvertisementSaverReader();
+        JobAdvertisement test = jobAdvertisements.get(0);
+        System.out.println(test);
+        reader.saveAsFile(test);
+        JobAdvertisement test2 = reader.LoadFromFile();
+        System.out.println(test2);
     }
 }
