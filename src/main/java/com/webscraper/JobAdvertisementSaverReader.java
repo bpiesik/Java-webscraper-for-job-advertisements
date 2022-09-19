@@ -30,7 +30,9 @@ public class JobAdvertisementSaverReader {
 
             return jobAdvertisement;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            JobAdvertisement placeholder = new JobAdvertisement();
+            placeholder.setTitle("placeholder");
+            return placeholder;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

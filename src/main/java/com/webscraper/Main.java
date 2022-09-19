@@ -9,24 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         // filters
         List<String> ignoredCompanies = new ArrayList<>(
                 List.of("Test Company Name")
         );
+        List<String> ignoredLocations = new ArrayList<>(
+                List.of("Test Location")
+        );
 
         WebScraper stepStone = new StepStoneScraper();
-        List<JobAdvertisement> jobAdvertisements = stepStone.getJobAdvertisements();
+        List<JobAdvertisement> jobAdvertisements = stepStone.getNewestJobAdvertisements();
 
         List<JobAdvertisement> filteredJobAdvertisements = jobAdvertisements.stream()
-                .filter(ad -> !ignoredCompanies.contains(ad.getCompany()))
+                .filter(ad -> !ignoredCompanies.contains(ad.getCompany())
+                        && !ignoredLocations.contains(ad.getLocations()))
                 .toList();
 
-        JobAdvertisementSaverReader reader = new JobAdvertisementSaverReader();
-        JobAdvertisement test = jobAdvertisements.get(0);
-        System.out.println(test);
-        reader.saveAsFile(test);
-        JobAdvertisement test2 = reader.LoadFromFile();
-        System.out.println(test2);
+        filteredJobAdvertisements.forEach(System.out::println);
     }
 }
