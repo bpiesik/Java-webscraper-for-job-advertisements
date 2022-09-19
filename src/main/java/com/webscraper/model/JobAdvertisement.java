@@ -1,6 +1,7 @@
 package com.webscraper.model;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class JobAdvertisement implements Serializable {
     private String title;
@@ -13,6 +14,10 @@ public class JobAdvertisement implements Serializable {
         this.company = company;
         this.locations = locations;
         this.url = url;
+    }
+
+    public JobAdvertisement(){
+
     }
 
     public String getTitle() {
@@ -49,10 +54,10 @@ public class JobAdvertisement implements Serializable {
 
     @Override
     public String toString() {
-        return "JobAdvertisment{" +
+        return "JobAdvertisement{" +
                 "title='" + title + '\'' +
                 ", company='" + company + '\'' +
-                ", locations=" + locations +
+                ", locations=" + Arrays.toString(locations) +
                 ", url='" + url + '\'' +
                 '}';
     }
