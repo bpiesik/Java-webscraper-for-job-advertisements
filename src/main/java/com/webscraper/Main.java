@@ -3,21 +3,26 @@ package com.webscraper;
 import com.webscraper.model.JobAdvertisement;
 import com.webscraper.scraper.StepStoneScraper;
 import com.webscraper.scraper.WebScraper;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
+        // filters
+        List<String> ignoredCompanies = new ArrayList<>(
+                List.of("Test Company Name")
+        );
+
         WebScraper stepStone = new StepStoneScraper();
         List<JobAdvertisement> jobAdvertisements = stepStone.getJobAdvertisements();
 
-        for(JobAdvertisement ad : jobAdvertisements){
-            System.out.println(ad.getTitle());
+        List<JobAdvertisement> filteredJobAdvertisements = jobAdvertisements.stream()
+                .filter(ad -> !ignoredCompanies.contains(ad.getCompany()))
+                .toList();
+
+        for (JobAdvertisement ad : filteredJobAdvertisements) {
+            System.out.println(ad.getCompany());
         }
     }
 }
