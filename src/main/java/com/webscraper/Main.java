@@ -27,5 +27,14 @@ public class Main {
                 .toList();
 
         filteredJobAdvertisements.forEach(System.out::println);
+
+        for (JobAdvertisement ad : filteredJobAdvertisements) {
+            Runtime rt = Runtime.getRuntime();
+            try {
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + "https://" + ad.getUrl());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

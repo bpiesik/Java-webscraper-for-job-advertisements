@@ -33,9 +33,7 @@ public class JobAdvertisementSaverReader {
             JobAdvertisement placeholder = new JobAdvertisement();
             placeholder.setTitle("placeholder");
             return placeholder;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;
