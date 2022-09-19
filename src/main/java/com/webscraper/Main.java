@@ -4,6 +4,7 @@ import com.webscraper.model.JobAdvertisement;
 import com.webscraper.scraper.StepStoneScraper;
 import com.webscraper.scraper.WebScraper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,17 @@ public class Main {
                 .toList();
 
         for (JobAdvertisement ad : filteredJobAdvertisements) {
-            System.out.println(ad.getCompany());
+            try {
+                Thread.sleep(1000 * 1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Runtime rt = Runtime.getRuntime();
+            try {
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + "https://" + ad.getUrl());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
