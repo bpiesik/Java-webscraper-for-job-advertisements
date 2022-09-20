@@ -16,12 +16,15 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
+        // parameters
+        boolean openInBrowser = true;
+
         // filters
         List<String> ignoredCompanies = new ArrayList<>(
                 List.of("Test Company")
         );
         List<String> ignoredLocations = new ArrayList<>(
-                List.of("Test Location")
+                List.of("München")
         );
         List<String> ignoredKeywords = new ArrayList<>(
                 List.of("Senior",
@@ -30,31 +33,35 @@ public class Main {
                         "C#")
         );
 
+        // get job advertisements
         WebScraper stepStone = new StepStoneScraper();
         List<JobAdvertisement> jobAdvertisements = stepStone.getNewestJobAdvertisements();
 
+        // apply filters
         List<JobAdvertisement> filteredJobAdvertisements = jobAdvertisements.stream()
-                .filter(ad -> !ignoredCompanies.contains(ad.getCompany())
-                        || !ignoredLocations.contains(ad.getLocations()))
+                .filter(ad -> !ignoredCompanies.contains(
+                        ad.getCompany()))
                 .toList();
 
         for (String keyword : ignoredKeywords) {
             filteredJobAdvertisements = filteredJobAdvertisements.stream()
                     .filter(
-                    jobAdvertisement -> !Arrays.stream(jobAdvertisement.getTitle().split(" ")).
-                            toList().contains(keyword))
+                            jobAdvertisement -> !Arrays.stream(jobAdvertisement.getTitle().split(" ")).
+                                    toList().contains(keyword))
                     .toList();
         }
 
         filteredJobAdvertisements.forEach(System.out::println);
 
-        /*for (JobAdvertisement ad : filteredJobAdvertisements) {
+    if(openInBrowser){
+        for (JobAdvertisement ad : filteredJobAdvertisements) {
             Runtime rt = Runtime.getRuntime();
             try {
-                rt.exec("rundll32 url.dll,FileProtocolHandler " + "https://" + ad.getUrl())
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + "https://" + ad.getUrl());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
+    }
     }
 }
