@@ -72,6 +72,8 @@ public class StepStoneScraper implements WebScraper {
         List<JobAdvertisement> jobAdvertisements = getJobAdvertisements();
         JobAdvertisement lastJobAdvertisement = getLastVisitedJobAdvertisement();
 
+        saveLastVisitedJobAdvertisement(jobAdvertisements.get(0));
+
         return jobAdvertisements
                 .stream()
                 // url is used as a unique identifier in this case
