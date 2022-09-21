@@ -5,6 +5,10 @@ import com.webscraper.model.JobAdvertisement;
 import java.io.*;
 
 public class JobAdvertisementSaverReader {
+    /**
+     * Serialize and save a job advertisement on local disk
+     * @param jobAdvertisement the job advertisement that should be saved
+     */
     public void saveAsFile(JobAdvertisement jobAdvertisement) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("./jobAdvertisement.ser");
@@ -18,6 +22,10 @@ public class JobAdvertisementSaverReader {
         }
     }
 
+    /**
+     * Load a saved job advertisement from disk
+     * @return the loaded job advertisement
+     */
     public JobAdvertisement LoadFromFile() {
         try {
             FileInputStream fileInputStream = new FileInputStream("./jobAdvertisement.ser");

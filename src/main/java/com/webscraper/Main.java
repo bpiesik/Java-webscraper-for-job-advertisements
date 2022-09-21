@@ -9,11 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * to do:
- * - verschiedene keywords/suchbegriffe angeben können
- * - andere job plattformen anschließen
- */
+
 public class Main {
     public static void main(String[] args) {
         // parameters
