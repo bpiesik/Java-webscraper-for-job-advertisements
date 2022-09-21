@@ -30,7 +30,8 @@ public class Main {
                 List.of("Senior",
                         "(Senior)",
                         "PHP",
-                        "C#")
+                        "C#",
+                        "Embedded")
         );
 
         // get job advertisements
